@@ -9,19 +9,20 @@ import (
 	"sync"
 	"syscall"
 
-	"github.com/cloudnativelabs/kube-router/pkg/controllers/netpol"
-	"github.com/cloudnativelabs/kube-router/pkg/controllers/proxy"
-	"github.com/cloudnativelabs/kube-router/pkg/controllers/routing"
-	"github.com/cloudnativelabs/kube-router/pkg/healthcheck"
-	"github.com/cloudnativelabs/kube-router/pkg/metrics"
-	"github.com/cloudnativelabs/kube-router/pkg/options"
 	"github.com/golang/glog"
+	"gitlab.com/trojan295/kube-router/pkg/controllers/netpol"
+	"gitlab.com/trojan295/kube-router/pkg/controllers/proxy"
+	"gitlab.com/trojan295/kube-router/pkg/controllers/routing"
+	"gitlab.com/trojan295/kube-router/pkg/healthcheck"
+	"gitlab.com/trojan295/kube-router/pkg/metrics"
+	"gitlab.com/trojan295/kube-router/pkg/options"
+
+	"time"
 
 	"k8s.io/client-go/informers"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
-	"time"
 )
 
 // These get set at build time via -ldflags magic

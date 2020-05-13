@@ -13,10 +13,6 @@ import (
 	"sync"
 	"time"
 
-	"github.com/cloudnativelabs/kube-router/pkg/healthcheck"
-	"github.com/cloudnativelabs/kube-router/pkg/metrics"
-	"github.com/cloudnativelabs/kube-router/pkg/options"
-	"github.com/cloudnativelabs/kube-router/pkg/utils"
 	"github.com/coreos/go-iptables/iptables"
 	"github.com/golang/glog"
 	bgpapi "github.com/osrg/gobgp/api"
@@ -27,6 +23,10 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/vishvananda/netlink"
 	"github.com/vishvananda/netlink/nl"
+	"gitlab.com/trojan295/kube-router/pkg/healthcheck"
+	"gitlab.com/trojan295/kube-router/pkg/metrics"
+	"gitlab.com/trojan295/kube-router/pkg/options"
+	"gitlab.com/trojan295/kube-router/pkg/utils"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"

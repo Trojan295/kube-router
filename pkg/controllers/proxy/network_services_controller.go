@@ -17,10 +17,6 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/cloudnativelabs/kube-router/pkg/healthcheck"
-	"github.com/cloudnativelabs/kube-router/pkg/metrics"
-	"github.com/cloudnativelabs/kube-router/pkg/options"
-	"github.com/cloudnativelabs/kube-router/pkg/utils"
 	"github.com/coreos/go-iptables/iptables"
 	"github.com/docker/docker/client"
 	"github.com/docker/libnetwork/ipvs"
@@ -28,6 +24,10 @@ import (
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/vishvananda/netlink"
 	"github.com/vishvananda/netns"
+	"gitlab.com/trojan295/kube-router/pkg/healthcheck"
+	"gitlab.com/trojan295/kube-router/pkg/metrics"
+	"gitlab.com/trojan295/kube-router/pkg/options"
+	"gitlab.com/trojan295/kube-router/pkg/utils"
 	"golang.org/x/net/context"
 	api "k8s.io/api/core/v1"
 	"k8s.io/client-go/kubernetes"
@@ -135,7 +135,7 @@ func (ln *linuxNetworking) ipAddrAdd(iface netlink.Link, ip string, addRoute boo
 	// When a service VIP is assigned to a dummy interface and accessed from host, in some of the
 	// case Linux source IP selection logix selects VIP itself as source leading to problems
 	// to avoid this an explicit entry is added to use node IP as source IP when accessing
-	// VIP from the host. Please see https://github.com/cloudnativelabs/kube-router/issues/376
+	// VIP from the host. Please see https://gitlab.com/trojan295/kube-router/issues/376
 
 	if !addRoute {
 		return nil
@@ -331,7 +331,7 @@ func (nsc *NetworkServicesController) Run(healthChan chan<- *healthcheck.Control
 		glog.Error(sysctlErr.Error())
 	}
 
-	// https://github.com/cloudnativelabs/kube-router/issues/282
+	// https://gitlab.com/trojan295/kube-router/issues/282
 	err = nsc.setupIpvsFirewall()
 	if err != nil {
 		glog.Error("Error setting up ipvs firewall: " + err.Error())

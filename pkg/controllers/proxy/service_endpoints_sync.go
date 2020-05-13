@@ -9,10 +9,10 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/cloudnativelabs/kube-router/pkg/metrics"
 	"github.com/docker/libnetwork/ipvs"
 	"github.com/golang/glog"
 	"github.com/vishvananda/netlink"
+	"gitlab.com/trojan295/kube-router/pkg/metrics"
 	"k8s.io/apimachinery/pkg/util/sets"
 )
 

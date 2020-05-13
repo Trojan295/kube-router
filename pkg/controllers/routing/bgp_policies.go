@@ -4,9 +4,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/cloudnativelabs/kube-router/pkg/utils"
 	"github.com/osrg/gobgp/config"
 	"github.com/osrg/gobgp/table"
+	"gitlab.com/trojan295/kube-router/pkg/utils"
 	v1core "k8s.io/api/core/v1"
 )
 

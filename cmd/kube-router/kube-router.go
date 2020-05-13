@@ -8,9 +8,9 @@ import (
 
 	_ "net/http/pprof"
 
-	"github.com/cloudnativelabs/kube-router/pkg/cmd"
-	"github.com/cloudnativelabs/kube-router/pkg/options"
 	"github.com/spf13/pflag"
+	"gitlab.com/trojan295/kube-router/pkg/cmd"
+	"gitlab.com/trojan295/kube-router/pkg/options"
 )
 
 func main() {

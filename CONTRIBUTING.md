@@ -9,14 +9,14 @@ Please read [users guide](./docs/user-guide.md) and [developers guide](/docs/dev
 
 ## Filing issues
 
-If you have a question about Kube-router or have a problem using it, please start with contacting us on [community forum](https://kubernetes.slack.com/messages/C8DCQGTSB/) for quick help. If that doesn't answer your questions, or if you think you found a bug, please [file an issue](https://github.com/cloudnativelabs/kube-router/issues).
+If you have a question about Kube-router or have a problem using it, please start with contacting us on [community forum](https://kubernetes.slack.com/messages/C8DCQGTSB/) for quick help. If that doesn't answer your questions, or if you think you found a bug, please [file an issue](https://gitlab.com/trojan295/kube-router/issues).
 
 ## Contributing Changes
 
 ### Fork the code
 
 Navigate to:
-[https://github.com/cloudnativelabs/kube-router](https://github.com/cloudnativelabs/kube-router)
+[https://gitlab.com/trojan295/kube-router](https://gitlab.com/trojan295/kube-router)
 and fork the repository.
 
 Follow these steps to setup a local repository for working on Kube-router:
@@ -24,7 +24,7 @@ Follow these steps to setup a local repository for working on Kube-router:
 ``` bash
 $ git clone https://github.com/YOUR_ACCOUNT/kube-router.git
 $ cd kube-router
-$ git remote add upstream https://github.com/cloudnativelabs/kube-router
+$ git remote add upstream https://gitlab.com/trojan295/kube-router
 $ git checkout master
 $ git fetch upstream
 $ git rebase upstream/master

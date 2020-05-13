@@ -7,7 +7,7 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/cloudnativelabs/kube-router/pkg/utils"
+	"gitlab.com/trojan295/kube-router/pkg/utils"
 )
 
 // setup a custom routing table that will be used for policy based routing to ensure traffic originating

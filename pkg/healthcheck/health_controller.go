@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/cloudnativelabs/kube-router/pkg/options"
 	"github.com/golang/glog"
+	"gitlab.com/trojan295/kube-router/pkg/options"
 	"golang.org/x/net/context"
 )
 

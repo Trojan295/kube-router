@@ -5,16 +5,16 @@
 The best way to get started is to deploy Kubernetes with Kube-router is with a cluster installer.
 
 ### kops
-Please see the [steps](https://github.com/cloudnativelabs/kube-router/blob/master/docs/kops.md) to deploy Kubernetes cluster with Kube-router using [Kops](https://github.com/kubernetes/kops)
+Please see the [steps](https://gitlab.com/trojan295/kube-router/blob/master/docs/kops.md) to deploy Kubernetes cluster with Kube-router using [Kops](https://github.com/kubernetes/kops)
 
 ### bootkube
-Please see the [steps](https://github.com/cloudnativelabs/kube-router/tree/master/contrib/bootkube) to deploy Kubernetes cluster with Kube-router using [bootkube](https://github.com/kubernetes-incubator/bootkube)
+Please see the [steps](https://gitlab.com/trojan295/kube-router/tree/master/contrib/bootkube) to deploy Kubernetes cluster with Kube-router using [bootkube](https://github.com/kubernetes-incubator/bootkube)
 
 ### kubeadm
-Please see the [steps](https://github.com/cloudnativelabs/kube-router/blob/master/docs/kubeadm.md) to deploy Kubernetes cluster with Kube-router using [Kubeadm](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/)
+Please see the [steps](https://gitlab.com/trojan295/kube-router/blob/master/docs/kubeadm.md) to deploy Kubernetes cluster with Kube-router using [Kubeadm](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/)
 
 ### generic
-Please see the [steps](https://github.com/cloudnativelabs/kube-router/blob/master/docs/generic.md) to deploy kube-router on manually installed clusters
+Please see the [steps](https://gitlab.com/trojan295/kube-router/blob/master/docs/generic.md) to deploy kube-router on manually installed clusters
 
 ### Amazon specific notes
 When running in an AWS environment that requires an explicit proxy you need to inject the proxy server as a [environment variable](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) in your kube-router deployment
@@ -105,7 +105,7 @@ This is quickest way to deploy kube-router in Kubernetes v1.8+ (**dont forget to
 kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube-router/master/daemonset/kube-router-all-service-daemonset.yaml
 ```
 
-Above will run kube-router as pod on each node automatically. You can change the arguments in the daemonset definition as required to suit your needs. Some samples can be found at https://github.com/cloudnativelabs/kube-router/tree/master/daemonset with different argument to select set of the services kube-router should run.
+Above will run kube-router as pod on each node automatically. You can change the arguments in the daemonset definition as required to suit your needs. Some samples can be found at https://gitlab.com/trojan295/kube-router/tree/master/daemonset with different argument to select set of the services kube-router should run.
 
 ## running as agent
 

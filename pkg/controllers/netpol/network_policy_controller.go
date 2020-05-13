@@ -5,7 +5,6 @@ import (
 	"encoding/base32"
 	"errors"
 	"fmt"
-	"k8s.io/apimachinery/pkg/util/intstr"
 	"net"
 	"regexp"
 	"strconv"
@@ -13,13 +12,15 @@ import (
 	"sync"
 	"time"
 
-	"github.com/cloudnativelabs/kube-router/pkg/healthcheck"
-	"github.com/cloudnativelabs/kube-router/pkg/metrics"
-	"github.com/cloudnativelabs/kube-router/pkg/options"
-	"github.com/cloudnativelabs/kube-router/pkg/utils"
+	"k8s.io/apimachinery/pkg/util/intstr"
+
 	"github.com/coreos/go-iptables/iptables"
 	"github.com/golang/glog"
 	"github.com/prometheus/client_golang/prometheus"
+	"gitlab.com/trojan295/kube-router/pkg/healthcheck"
+	"gitlab.com/trojan295/kube-router/pkg/metrics"
+	"gitlab.com/trojan295/kube-router/pkg/options"
+	"gitlab.com/trojan295/kube-router/pkg/utils"
 
 	api "k8s.io/api/core/v1"
 	apiextensions "k8s.io/api/extensions/v1beta1"
