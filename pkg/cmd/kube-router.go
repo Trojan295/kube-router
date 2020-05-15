@@ -11,6 +11,7 @@ import (
 
 	"github.com/golang/glog"
 	"gitlab.com/trojan295/kube-router/pkg/controllers/netpol"
+	"gitlab.com/trojan295/kube-router/pkg/controllers/podegress"
 	"gitlab.com/trojan295/kube-router/pkg/controllers/proxy"
 	"gitlab.com/trojan295/kube-router/pkg/controllers/routing"
 	"gitlab.com/trojan295/kube-router/pkg/healthcheck"
@@ -178,6 +179,19 @@ func (kr *KubeRouter) Run() error {
 
 		wg.Add(1)
 		go nsc.Run(healthChan, stopCh, &wg)
+	}
+
+	if kr.Config.RunPodEgressController {
+		pec, err := podegress.NewPodEgressController(kr.Client, kr.Config, podInformer)
+
+		if err != nil {
+			return errors.New("Failed to create pod egress controller: " + err.Error())
+		}
+
+		podInformer.AddEventHandler(pec.PodEventHandler)
+
+		wg.Add(1)
+		go pec.Run(healthChan, stopCh, &wg)
 	}
 
 	// Handle SIGINT and SIGTERM

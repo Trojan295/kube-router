@@ -58,6 +58,7 @@ type KubeRouterConfig struct {
 	RunFirewall                    bool
 	RunRouter                      bool
 	RunServiceProxy                bool
+	RunPodEgressController         bool
 	Version                        bool
 	VLevel                         string
 	// FullMeshPassword    string
@@ -89,6 +90,8 @@ func (s *KubeRouterConfig) AddFlags(fs *pflag.FlagSet) {
 		"Enables Network Policy -- sets up iptables to provide ingress firewall for pods.")
 	fs.BoolVar(&s.RunRouter, "run-router", true,
 		"Enables Pod Networking -- Advertises and learns the routes to Pods via iBGP.")
+	fs.BoolVar(&s.RunPodEgressController, "run-pod-egress-controller", true,
+		"Enables Pod Egress Controller -- allows to use static egress IPs")
 	fs.StringVar(&s.Master, "master", s.Master,
 		"The address of the Kubernetes API server (overrides any value in kubeconfig).")
 	fs.StringVar(&s.Kubeconfig, "kubeconfig", s.Kubeconfig,

@@ -938,7 +938,6 @@ func (ln *linuxNetworking) prepareEndpointForDsr(containerId string, endpointIP 
 				break
 			}
 			if err != nil && err.Error() == IFACE_NOT_FOUND {
-				continue
 				glog.V(3).Infof("Waiting for tunnel interface %s to come up in the pod, retrying", KUBE_TUNNEL_IF)
 			} else {
 				break

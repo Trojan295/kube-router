@@ -10,19 +10,19 @@ import (
 // set up MASQUERADE rule so that egress traffic from the pods gets masqueraded to node's IP
 
 var (
-	podEgressArgs4 = []string{"-m", "set", "--match-set", podSubnetsIPSetName, "src",
-		"-m", "set", "!", "--match-set", podSubnetsIPSetName, "dst",
-		"-m", "set", "!", "--match-set", nodeAddrsIPSetName, "dst",
+	podEgressArgs4 = []string{"-m", "set", "--match-set", PodSubnetsIPSetName, "src",
+		"-m", "set", "!", "--match-set", PodSubnetsIPSetName, "dst",
+		"-m", "set", "!", "--match-set", NodeAddrsIPSetName, "dst",
 		"-j", "MASQUERADE"}
-	podEgressArgs6 = []string{"-m", "set", "--match-set", "inet6:" + podSubnetsIPSetName, "src",
-		"-m", "set", "!", "--match-set", "inet6:" + podSubnetsIPSetName, "dst",
-		"-m", "set", "!", "--match-set", "inet6:" + nodeAddrsIPSetName, "dst",
+	podEgressArgs6 = []string{"-m", "set", "--match-set", "inet6:" + PodSubnetsIPSetName, "src",
+		"-m", "set", "!", "--match-set", "inet6:" + PodSubnetsIPSetName, "dst",
+		"-m", "set", "!", "--match-set", "inet6:" + NodeAddrsIPSetName, "dst",
 		"-j", "MASQUERADE"}
-	podEgressArgsBad4 = [][]string{{"-m", "set", "--match-set", podSubnetsIPSetName, "src",
-		"-m", "set", "!", "--match-set", podSubnetsIPSetName, "dst",
+	podEgressArgsBad4 = [][]string{{"-m", "set", "--match-set", PodSubnetsIPSetName, "src",
+		"-m", "set", "!", "--match-set", PodSubnetsIPSetName, "dst",
 		"-j", "MASQUERADE"}}
-	podEgressArgsBad6 = [][]string{{"-m", "set", "--match-set", "inet6:" + podSubnetsIPSetName, "src",
-		"-m", "set", "!", "--match-set", "inet6:" + podSubnetsIPSetName, "dst",
+	podEgressArgsBad6 = [][]string{{"-m", "set", "--match-set", "inet6:" + PodSubnetsIPSetName, "src",
+		"-m", "set", "!", "--match-set", "inet6:" + PodSubnetsIPSetName, "dst",
 		"-j", "MASQUERADE"}}
 )
 

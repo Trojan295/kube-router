@@ -79,6 +79,7 @@ Usage of kube-router:
       --router-id string                              BGP router-id. Must be specified in a ipv6 only cluster.
       --routes-sync-period duration                   The delay between route updates and advertisements (e.g. '5s', '1m', '2h22m'). Must be greater than 0. (default 5m0s)
       --run-firewall                                  Enables Network Policy -- sets up iptables to provide ingress firewall for pods. (default true)
+      --run-pod-egress-controller                     Enables Pod Egress Controller -- allows to use static egress IPs (default true)
       --run-router                                    Enables Pod Networking -- Advertises and learns the routes to Pods via iBGP. (default true)
       --run-service-proxy                             Enables Service Proxy -- sets up IPVS for Kubernetes Services. (default true)
   -v, --v string                                      log level for V logs (default "0")
