@@ -1,13 +1,13 @@
 NAME?=kube-router
 GOARCH?=$(shell go env GOARCH)
-DEV_SUFFIX?=-git
 OSX=$(filter Darwin,$(shell uname))
 BUILD_DATE?=$(shell date +%Y-%m-%dT%H:%M:%S%z)
 LOCAL_PACKAGES?=app app/controllers app/options app/watchers utils
-IMG_NAMESPACE?=cloudnativelabs
-GIT_COMMIT=$(shell git describe --tags --dirty)
+IMG_FQDN?=registry.gitlab.com
+IMG_NAMESPACE?=trojan295
+GIT_COMMIT=$(shell git describe --tags)
 GIT_BRANCH?=$(shell git rev-parse --abbrev-ref HEAD)
-IMG_TAG?=$(if $(IMG_TAG_PREFIX),$(IMG_TAG_PREFIX)-)$(if $(ARCH_TAG_PREFIX),$(ARCH_TAG_PREFIX)-)$(GIT_BRANCH)
+IMG_TAG?=$(if $(IMG_TAG_PREFIX),$(IMG_TAG_PREFIX)-)$(if $(ARCH_TAG_PREFIX),$(ARCH_TAG_PREFIX)-)$(GIT_COMMIT)
 RELEASE_TAG?=$(GOARCH)-$(shell build/get-git-tag.sh)
 REGISTRY?=$(if $(IMG_FQDN),$(IMG_FQDN)/$(IMG_NAMESPACE)/$(NAME),$(IMG_NAMESPACE)/$(NAME))
 REGISTRY_DEV?=$(REGISTRY)$(DEV_SUFFIX)
@@ -251,5 +251,6 @@ endif
 .PHONY: gopath gopath-fix vagrant-up-single-node
 .PHONY: vagrant-up-multi-node vagrant-destroy vagrant-clean vagrant
 .PHONY: multiarch-binverify
+.PHONY: kube-router
 
 .DEFAULT: all

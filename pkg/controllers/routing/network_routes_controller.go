@@ -38,8 +38,8 @@ const (
 
 	customRouteTableID   = "77"
 	customRouteTableName = "kube-router"
-	podSubnetsIPSetName  = "kube-router-pod-subnets"
-	nodeAddrsIPSetName   = "kube-router-node-ips"
+	PodSubnetsIPSetName  = "kube-router-pod-subnets"
+	NodeAddrsIPSetName   = "kube-router-node-ips"
 
 	nodeASNAnnotation                  = "kube-router.io/node.asn"
 	pathPrependASNAnnotation           = "kube-router.io/path-prepend.as"
@@ -570,13 +570,13 @@ func (nrc *NetworkRoutingController) syncNodeIPSets() error {
 	}
 
 	// Syncing Pod subnet ipset entries
-	psSet := nrc.ipSetHandler.Get(podSubnetsIPSetName)
+	psSet := nrc.ipSetHandler.Get(PodSubnetsIPSetName)
 	if psSet == nil {
-		glog.Infof("Creating missing ipset \"%s\"", podSubnetsIPSetName)
-		_, err = nrc.ipSetHandler.Create(podSubnetsIPSetName, utils.OptionTimeout, "0")
+		glog.Infof("Creating missing ipset \"%s\"", PodSubnetsIPSetName)
+		_, err = nrc.ipSetHandler.Create(PodSubnetsIPSetName, utils.OptionTimeout, "0")
 		if err != nil {
 			return fmt.Errorf("ipset \"%s\" not found in controller instance",
-				podSubnetsIPSetName)
+				PodSubnetsIPSetName)
 		}
 	}
 	err = psSet.Refresh(currentPodCidrs, psSet.Options...)
@@ -585,13 +585,13 @@ func (nrc *NetworkRoutingController) syncNodeIPSets() error {
 	}
 
 	// Syncing Node Addresses ipset entries
-	naSet := nrc.ipSetHandler.Get(nodeAddrsIPSetName)
+	naSet := nrc.ipSetHandler.Get(NodeAddrsIPSetName)
 	if naSet == nil {
-		glog.Infof("Creating missing ipset \"%s\"", nodeAddrsIPSetName)
-		_, err = nrc.ipSetHandler.Create(nodeAddrsIPSetName, utils.OptionTimeout, "0")
+		glog.Infof("Creating missing ipset \"%s\"", NodeAddrsIPSetName)
+		_, err = nrc.ipSetHandler.Create(NodeAddrsIPSetName, utils.OptionTimeout, "0")
 		if err != nil {
 			return fmt.Errorf("ipset \"%s\" not found in controller instance",
-				nodeAddrsIPSetName)
+				NodeAddrsIPSetName)
 		}
 	}
 	err = naSet.Refresh(currentNodeIPs, naSet.Options...)
@@ -914,12 +914,12 @@ func NewNetworkRoutingController(clientset kubernetes.Interface,
 		return nil, err
 	}
 
-	_, err = nrc.ipSetHandler.Create(podSubnetsIPSetName, utils.TypeHashNet, utils.OptionTimeout, "0")
+	_, err = nrc.ipSetHandler.Create(PodSubnetsIPSetName, utils.TypeHashNet, utils.OptionTimeout, "0")
 	if err != nil {
 		return nil, err
 	}
 
-	_, err = nrc.ipSetHandler.Create(nodeAddrsIPSetName, utils.TypeHashIP, utils.OptionTimeout, "0")
+	_, err = nrc.ipSetHandler.Create(NodeAddrsIPSetName, utils.TypeHashIP, utils.OptionTimeout, "0")
 	if err != nil {
 		return nil, err
 	}
