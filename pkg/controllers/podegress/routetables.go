@@ -30,9 +30,10 @@ func FindRouteTableForIP(ip net.IP, rts []routeTable) *routeTable {
 }
 
 func EnsureRouteRule(rt *routeTable) error {
+	rtID := fmt.Sprintf("%d", rt.ID)
 	fwmark := fmt.Sprintf("%x/0xff", rt.ID)
 
-	out, err := exec.Command("ip", "rule", "show", "fwmark", fwmark, "table", rt.Name).Output()
+	out, err := exec.Command("ip", "rule", "show", "fwmark", fwmark, "table", rtID).Output()
 	if err != nil {
 		return err
 	}
@@ -41,7 +42,7 @@ func EnsureRouteRule(rt *routeTable) error {
 		return nil
 	}
 
-	_, err = exec.Command("ip", "rule", "add", "fwmark", fwmark, "table", rt.Name).Output()
+	_, err = exec.Command("ip", "rule", "add", "fwmark", fwmark, "table", rtID).Output()
 	if err != nil {
 		return err
 	}

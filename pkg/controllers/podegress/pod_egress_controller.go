@@ -81,9 +81,6 @@ func (ctrl *PodEgressController) SyncPod(pod *v1.Pod, routingTables []routeTable
 		}
 	}
 
-	glog.V(3).Infof("rts: %v", routingTables)
-	glog.V(3).Infof("ip: %v", snatIPAddress)
-
 	if rt := FindRouteTableForIP(net.ParseIP(snatIPAddress), routingTables); rt != nil {
 		mark := fmt.Sprintf("%x/0xff", rt.ID)
 		if err := it.AppendUnique("mangle", preroutingMarkChain, "-s", podIP+"/32", "-j", "MARK", "--set-mark", mark); err != nil {
